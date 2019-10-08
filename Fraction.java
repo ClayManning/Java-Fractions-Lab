@@ -25,6 +25,30 @@ public class Fraction {
         this.denominator = denominator;
     }
 
+    public static Fraction add(Fraction f1, Fraction f2) {
+        f1.add(f2);
+        Fraction result = new Fraction(f1.numerator, f1.denominator);
+        return result;//This feels a little hacky, but it makes the method able to be called in the way required
+    }
+
+    public static Fraction subtract(Fraction f1, Fraction f2) {
+        f1.subtract(f2);
+        Fraction result = new Fraction(f1.numerator, f1.denominator);
+        return result;
+    }
+
+    public static Fraction multiply(Fraction f1, Fraction f2) {
+        f1.multiply(f2);
+        Fraction result = new Fraction(f1.numerator, f1.denominator);
+        return result;
+    }
+
+    public static Fraction divide(Fraction f1, Fraction f2) {
+        f1.divide(f2);
+        Fraction result = new Fraction(f1.numerator, f1.denominator);
+        return result;
+    }
+
     public void add(Fraction fraction) {
         int lcd;
         int temp;
@@ -85,14 +109,14 @@ public class Fraction {
         return this.denominator * fraction.denominator;
     }
 
-    public Fraction reduce() {
+    public void reduce() {
         int a;
         int b;
         a = this.numerator;
         b = this.denominator;
         int temp = gcd(a, b);
-        Fraction result = new Fraction((this.numerator / temp), (this.denominator / temp));
-        return result;
+        this.numerator = this.numerator / temp;
+        this.denominator = this.denominator / temp;
     }
 
     public static int gcd(int a, int b) { //Euclids algorithm
